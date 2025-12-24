@@ -5,6 +5,10 @@ import { GifsList } from "./gifs/components/GifsList";
 import { mockGifs } from "./mocks/gifs.mock";
 
 export const GifsApp = () => {
+  const handleSearch = (search: string) => {
+    console.log({ search });
+  };
+
   return (
     <>
       <CustomHeader
@@ -12,7 +16,7 @@ export const GifsApp = () => {
         description="Descubre y comparte el gif perfecto"
       />
 
-      <SearchBar placeholder="buscador de gifs" />
+      <SearchBar placeholder="buscador de gifs" onQuery={handleSearch} />
 
       <PreviousSearches searches={["goku", "naruto", "gojo"]} />
 
