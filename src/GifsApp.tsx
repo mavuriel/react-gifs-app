@@ -3,8 +3,15 @@ import { PreviousSearches } from "./gifs/components/PreviousSearches";
 import { SearchBar } from "./shared/components/SearchBar";
 import { GifsList } from "./gifs/components/GifsList";
 import { mockGifs } from "./mocks/gifs.mock";
+import { useState } from "react";
 
 export const GifsApp = () => {
+  const [previousSearches, setPreviousSearches] = useState(["DBZ"]);
+
+  const handlePreviousSearch = (search: string) => {
+    console.log({ search });
+  };
+
   const handleSearch = (search: string) => {
     console.log({ search });
   };
@@ -18,7 +25,10 @@ export const GifsApp = () => {
 
       <SearchBar placeholder="buscador de gifs" onQuery={handleSearch} />
 
-      <PreviousSearches searches={["goku", "naruto", "gojo"]} />
+      <PreviousSearches
+        searches={previousSearches}
+        onSearchClick={handlePreviousSearch}
+      />
 
       <GifsList gifs={mockGifs} />
     </>
