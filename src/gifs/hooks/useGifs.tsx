@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import type { Gif } from "../interfaces/gif.interface";
 import { getGifsByQuery } from "../actions/getGifsByQuery";
 
-// const gifsCache: Record<string, Gif[]> = {};
+export const PREVIOUS_LIMIT = 8;
 
 export const useGifs = () => {
   const [gifs, setGifs] = useState<Gif[]>([]);
@@ -36,7 +36,7 @@ export const useGifs = () => {
     gifsCache.current[formattedSearch] = gifs;
 
     setPreviousSearches((prevState) =>
-      [formattedSearch, ...prevState].slice(0, 8),
+      [formattedSearch, ...prevState].slice(0, PREVIOUS_LIMIT),
     );
   };
 
